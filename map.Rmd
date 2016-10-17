@@ -1,0 +1,22 @@
+---
+title: "map"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(googleVis)
+
+df <- read.csv("SA_provinces.csv", sep = ";", header = TRUE  )   # a simple data frame
+df1 <- df[c(1:9),c(1,2)]
+Geo <- gvisGeoMap(df1, locationvar="provinces", numvar="price", 
+                  options=list(region='ZA', height=400, dataMode='regions'))
+
+
+G2 <- gvisGeoMap(CityPopularity, locationvar='City', numvar='Popularity',
+                 options=list(region='US', height=350, 
+                              dataMode='markers',
+                              colors='[0xFF8747, 0xFFB581, 0xc06000]'))
+?gvisGeoMap
+
+plot(Geo)
+```
